@@ -1,9 +1,13 @@
-package com.victor.perseus;
+package com.victor.perseus.Presentation;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.victor.perseus.R;
 
 public class MainActivity extends Activity {
 
@@ -11,6 +15,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void changeToReceptas(View view){
+        Intent i = new Intent( MainActivity.this, Receptas.class);
+        startActivity(i);
     }
 
     @Override
@@ -34,4 +43,5 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

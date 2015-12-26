@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Presentation.Receptas"/>
+        <activity android:name=".Presentation.Afegir"/>
     </application>
 
 </manifest>

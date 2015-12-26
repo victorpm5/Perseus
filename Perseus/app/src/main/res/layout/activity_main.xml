@@ -24,6 +24,7 @@
         android:id="@+id/button2"
         android:layout_marginTop="41dp"
         android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_alignStart="@+id/button"
+        android:onClick="changeToAfegir"/>
 
 </RelativeLayout>

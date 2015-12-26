@@ -4,6 +4,7 @@ package com.victor.perseus.Domain;
  * Created by victor on 25/11/2015.
  */
 public class RecipeTipe {
+    int id;
     private String name;
 
     public RecipeTipe(String name){

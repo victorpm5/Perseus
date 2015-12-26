@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.victor.perseus.R;
 
@@ -19,6 +20,11 @@ public class MainActivity extends Activity {
 
     public void changeToReceptas(View view){
         Intent i = new Intent( MainActivity.this, Receptas.class);
+        startActivity(i);
+    }
+
+    public void changeToAfegir(View view){
+        Intent i = new Intent( MainActivity.this, Afegir.class);
         startActivity(i);
     }
 
@@ -37,8 +43,9 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_ajuda) {
+            Toast.makeText(getApplicationContext(), "this is my Toast message!!! =)",
+                    Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);

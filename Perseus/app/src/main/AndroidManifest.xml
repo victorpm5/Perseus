@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".Presentation.Receptas"/>
         <activity android:name=".Presentation.Afegir"/>
+        <activity android:name=".Presentation.Detall"/>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="@drawable/fons"
     tools:context=".MainActivity" >
 
     <EditText
@@ -22,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="search_db"
         android:text="Busca"
         android:textColor="#FFFFFF"
         android:background="#C0C0C0" />

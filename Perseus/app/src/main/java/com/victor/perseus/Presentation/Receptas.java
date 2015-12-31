@@ -4,18 +4,30 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
+import com.victor.perseus.Domain.Ingredient;
+import com.victor.perseus.Domain.MyAdapter;
+import com.victor.perseus.Domain.Recipe;
+import com.victor.perseus.Domain.RecipeIngredient;
+import com.victor.perseus.Domain.RecipeTipe;
 import com.victor.perseus.Persistence.DB;
 import com.victor.perseus.R;
+
+import java.lang.reflect.Array;
+import java.util.List;
 
 /**
  * Created by victor on 25/12/2015.
@@ -23,9 +35,6 @@ import com.victor.perseus.R;
 public class Receptas extends Activity {
 
     protected ListView lv;
-    protected ListAdapter adapter;
-    SQLiteDatabase db;
-    Cursor cursor;
     EditText et;
 
 
@@ -33,10 +42,17 @@ public class Receptas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receptas);
-
         lv = (ListView) findViewById(R.id.lv);
         et = (EditText) findViewById(R.id.et);
-        db = (new DB(this)).getWritableDatabase();
+        lv.setAdapter(Presentation_controller.getAdapter());
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent( Receptas.this, Detall.class);
+                i.putExtra("posicio",position);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new Presentation_controller(getApplicationContext(),getResources());
     }
 
     public void changeToReceptas(View view){
@@ -44,7 +45,7 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ajuda) {
-            Toast.makeText(getApplicationContext(), "this is my Toast message!!! =)",
+            Toast.makeText(getApplicationContext(), "això és l'ajuda! :)",
                     Toast.LENGTH_LONG).show();
         }
 

@@ -32,6 +32,10 @@ public class Ingredient {
         return name;
     }
 
+    public String toString(){
+        return name;
+    }
+
 
     //SETTERS
     public void setId(int id) {

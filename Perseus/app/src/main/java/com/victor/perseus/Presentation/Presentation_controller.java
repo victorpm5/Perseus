@@ -3,6 +3,7 @@ package com.victor.perseus.Presentation;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.victor.perseus.Domain.Ingredient;
 import com.victor.perseus.Domain.MyAdapter;
 import com.victor.perseus.Domain.Recipe;
 import com.victor.perseus.Domain.RecipeTipe;
@@ -21,6 +22,7 @@ public class Presentation_controller {
     private static List<Recipe> llista;
     private static MyAdapter adapter;
     private static List<RecipeTipe> tipus;
+    private static List<Ingredient> ingredients;
 
     public Presentation_controller(Context context,Resources resources){
         this.context = context;
@@ -30,23 +32,21 @@ public class Presentation_controller {
         adapter = new MyAdapter(context,llista);
         tipus = db.getAllTipusRecepta();
         tipus.add(new RecipeTipe("Afegeix Tipus"));
-    }
-
-    public static List<Recipe> getReceptes(){
-        return db.getAllRecipes();
+        ingredients = db.getAllIngredients();
+        ingredients.add(new Ingredient("Afegeix Ingredient"));
     }
 
     public static List<RecipeTipe> getTipus(){return tipus; }
-
-    public static Recipe getRecepta(String nom){
-        return db.getRecipeByName(nom);
-    }
 
     public static Recipe getRecepta(int posicio) {
         return db.getRecipeByName(llista.get(posicio).getNom());
     }
     public static void AfegeixTipus(String name){
         tipus.add(0,new RecipeTipe(name));
+    }
+
+    public static void AfegeixIngredient(String name){
+        ingredients.add(0,new Ingredient(name));
     }
 
     public static Long createRecepta(Recipe recipe){
@@ -56,6 +56,10 @@ public class Presentation_controller {
         return id;
     }
 
+    public static List<Ingredient> getIngredients(){
+        return ingredients;
+    }
+
     public static MyAdapter getAdapter(){
         return adapter;
     }
@@ -63,6 +67,11 @@ public class Presentation_controller {
     public static void actualitzaTipus(){
         tipus = db.getAllTipusRecepta();
         tipus.add(new RecipeTipe("Afegeix Tipus"));
+    }
+
+    public static void actualitzaIngredients(){
+        ingredients = db.getAllIngredients();
+        ingredients.add(new Ingredient("Afegeix Ingredient"));
     }
 
 }

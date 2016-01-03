@@ -82,7 +82,12 @@ public class Recipe {
         this.ingedients = ingedients;
     }
 
+    //
     public void addRecipeIngredient(RecipeIngredient ri){
         ingedients.add(ri);
+    }
+
+    public void delRecipeIngredient(int pos){
+        ingedients.remove(pos);
     }
 }

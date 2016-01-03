@@ -31,6 +31,8 @@ public class RecipeTipe {
         return name;
     }
 
+    public String toString(){ return  name; }
+
     //SETTERS
     public void setId(int id) {
         this.id = id;
@@ -39,4 +41,5 @@ public class RecipeTipe {
     public void setName(String name) {
         this.name = name;
     }
+
 }

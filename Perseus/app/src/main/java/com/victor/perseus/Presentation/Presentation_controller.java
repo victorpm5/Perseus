@@ -43,6 +43,17 @@ public class Presentation_controller {
     public static Recipe getRecepta(int posicio) {
         return db.getRecipeByName(filtratge.get(posicio).getNom());
     }
+
+    public static void esborrarRecepta(int posicio) {
+        int id_recepta = filtratge.get(posicio).getId();
+        int id_tipus = filtratge.get(posicio).getType().getId();
+        db.removeRecipeById(id_recepta,id_tipus);
+        filtratge.remove(posicio);
+        ingredients = db.getAllIngredients();
+        tipus = db.getAllTipusRecepta();
+        adapter = new MyAdapter(context,filtratge);
+    }
+
     public static void AfegeixTipus(String name){
         tipus.add(0,new RecipeTipe(name));
     }

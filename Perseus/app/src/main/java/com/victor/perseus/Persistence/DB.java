@@ -514,6 +514,32 @@ public class DB extends SQLiteOpenHelper {
         return tipus;
     }
 
+    /**
+     * remove tipus per id
+     * */
+    public void removeTipusById(int id) {
+        String selectQuery = "SELECT  COUNT(*) FROM " + TABLE_RECEPTA
+                +" WHERE " + ID_TIPUS + "=" + id ;
+        int count = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            count = c.getInt(0);
+        }
+        c.close();
+
+        if(count == 1) {
+            //Borrem de la bd tots els recipe ingredients
+            db = this.getWritableDatabase();
+            try {
+                db.delete(TABLE_TIPUS_RECEPTA, KEY_ID + " = " + id, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     //TABLE INGREDIENT OPERATIONS
 
     /*
@@ -593,6 +619,32 @@ public class DB extends SQLiteOpenHelper {
         return ingredient;
     }
 
+    /**
+     * remove ingredient per id
+     * */
+    public void removeIngredientById(int id) {
+        String selectQuery = "SELECT  COUNT(*) FROM " + TABLE_INGREDIENT_RECEPTA
+                +" WHERE " + ID_INGREDIENT + "=" + id ;
+        int count = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            count = c.getInt(0);
+        }
+        c.close();
+
+        if(count == 1) {
+            //Borrem de la bd tots els recipe ingredients
+            db = this.getWritableDatabase();
+            try {
+                db.delete(TABLE_INGREDIENT, KEY_ID + " = " + id, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     //TABLE INGREDIENT SUBSTITUT
 
     /*
@@ -643,6 +695,18 @@ public class DB extends SQLiteOpenHelper {
         }
         c.close();
         return ingredients;
+    }
+
+    /**
+     * remove substitud per id
+     * */
+    public void removeSubstitutById(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            db.delete(TABLE_INGREDIENT_SUBSTITUT, ID_INGREDIENT_RECEPTA + " = " + id, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -705,6 +769,40 @@ public class DB extends SQLiteOpenHelper {
         }
         c.close();
         return ingredients;
+    }
+
+
+    /**
+     * remove recipeIngredient by id and ingredients associated to it
+     * */
+    public void removeRecipeIngredientById(int id_recepta) {
+        //esborrem els ingredients i substituts associats
+        String selectQuery = "SELECT * FROM " + TABLE_INGREDIENT_RECEPTA
+                + " WHERE " + ID_RECEPTA + "=" + id_recepta;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                int id = c.getInt((c.getColumnIndex(KEY_ID)));
+                removeSubstitutById(id);
+                int id_ingredient = c.getInt((c.getColumnIndex(ID_INGREDIENT)));
+                removeIngredientById(id_ingredient);
+            } while (c.moveToNext());
+        }
+        c.close();
+
+        //Borrem de la bd tots els recipe ingredients
+        db = this.getWritableDatabase();
+        try
+        {
+            db.delete(TABLE_INGREDIENT_RECEPTA, ID_RECEPTA  + " = " + id_recepta, null);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     //TABLE RECEPTA OPERATIONS
@@ -911,6 +1009,23 @@ public class DB extends SQLiteOpenHelper {
         }
         c.close();
         return receptas;
+    }
+
+    /**
+     * remove recipe by id and ingredients associated to it
+     * */
+    public void removeRecipeById(int id_recepta,int id_tipus) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try
+        {
+            removeRecipeIngredientById(id_recepta);
+            removeTipusById(id_tipus);
+            db.delete(TABLE_RECEPTA, KEY_ID  + " = " + id_recepta, null);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
 

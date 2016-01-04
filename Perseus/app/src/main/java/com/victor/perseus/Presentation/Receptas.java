@@ -1,6 +1,8 @@
 package com.victor.perseus.Presentation;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -64,10 +66,44 @@ public class Receptas extends Activity {
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
+                                           final int pos, long id) {
 
+                final CharSequence[] items = {"Modificar", "Esborrar"};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(arg0.getContext());
+                builder.setTitle("Selecciona una acció");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        if(item ==0){
+                            Toast toast = Toast.makeText(getApplicationContext(), "modifiquem la recepta", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else{
+                            dialog.dismiss();
+                            builder.setTitle("Atenció");
+                            builder.setMessage("Estàs apunt d'esborrar la recepta "
+                                    + Presentation_controller.getRecepta(pos).getNom() + ". Estàs segur d'això?");
+                            builder.setPositiveButton("Continuar", new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface arg0, int arg1)
+                                {
+                                    Presentation_controller.esborrarRecepta(pos);
+                                    lv.setAdapter(Presentation_controller.getAdapter());
+                                }
+                            });
+                            builder.setNegativeButton("Cancel·lar", new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface arg0, int arg1)
+                                {
+                                }
+                            });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
 
-                Log.v("long clicked","pos: " + pos);
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
 
                 return true;
             }

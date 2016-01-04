@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btn"
         android:layout_toLeftOf="@+id/btn"
-        android:inputType="textEmailAddress"
-		android:hint="Cerca per nom">
+        android:inputType="textCapSentences"
+		android:hint="Introdueix el nom de la recepta">
     </EditText>
 
     <Button
@@ -25,15 +25,45 @@
         android:layout_alignParentTop="true"
         android:text="Busca"
         android:textColor="#FFFFFF"
-        android:background="#C0C0C0" />
+        android:background="#a2a2a2"
+        android:onClick="cercaPerNom" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et"
+        android:layout_marginLeft="20dp"
+        android:orientation='horizontal'
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:id="@+id/nom"
+            android:checked="true"
+            android:onClick="actualitzaEt" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipus"
+            android:id="@+id/tipus"
+            android:onClick="actualitzaEt" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredient"
+            android:id="@+id/Ingredient"
+            android:onClick="actualitzaEt" />
+    </RadioGroup>
 
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/et">
+        android:layout_below="@+id/radioGroup">
     </ListView>
 
 </RelativeLayout>

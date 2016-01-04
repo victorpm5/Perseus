@@ -49,6 +49,11 @@ public class MainActivity extends Activity {
                     Toast.LENGTH_LONG).show();
         }
 
+        if (id == R.id.action_informacio) {
+            Toast.makeText(getApplicationContext(), "Aplicació creada per Víctor Pérez per l'assignatura de IDI a la FIB, UPC.",
+                    Toast.LENGTH_LONG).show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -46,7 +46,8 @@
                 android:layout_marginRight="10dp"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:hint="Introdueix el nom">
+                android:hint="Introdueix el nom"
+                android:textColor="#000000">
             </EditText>
 
             <TextView
@@ -67,7 +68,8 @@
                 android:layout_toEndOf="@+id/textView2"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="6dp"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF"
+                style="@android:style/Theme.Holo.Light.DarkActionBar" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +123,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
-                android:layout_toEndOf="@+id/seleccioSubstitut" />
+                android:layout_toEndOf="@+id/seleccioSubstitut"
+                android:textColor="#000000" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -131,7 +134,8 @@
                 android:checked="false"
                 android:layout_below="@+id/quantitat"
                 android:layout_alignParentStart="true"
-                android:onClick="mostraSubstitut" />
+                android:onClick="mostraSubstitut"
+                android:textColor="#000000" />
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,7 +179,8 @@
                 android:scrollbars="vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:textColor="#000000" />
 
             <Button
                 android:layout_width="wrap_content"

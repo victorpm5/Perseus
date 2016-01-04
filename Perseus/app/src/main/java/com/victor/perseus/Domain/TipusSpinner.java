@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.text.InputType;
+import android.text.method.TextKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +27,7 @@ public class TipusSpinner extends Activity implements AdapterView.OnItemSelected
             AlertDialog.Builder alert = new AlertDialog.Builder(parent.getContext());
             final EditText edittext = new EditText(parent.getContext());
             edittext.setHint("Nom del tipus");
+            edittext.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
             alert.setTitle("Nou tipus");
             alert.setMessage("Introdueix el nom del tipus a afegir");
 

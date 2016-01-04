@@ -20,6 +20,7 @@ public class Presentation_controller {
     Resources resources;
     private static DB db;
     private static List<Recipe> llista;
+    private static List<Recipe> filtratge;
     private static MyAdapter adapter;
     private static List<RecipeTipe> tipus;
     private static List<Ingredient> ingredients;
@@ -29,6 +30,7 @@ public class Presentation_controller {
         this.resources = resources;
         db = new DB(context,resources);
         llista = db.getVista();
+        filtratge = llista;
         adapter = new MyAdapter(context,llista);
         tipus = db.getAllTipusRecepta();
         tipus.add(new RecipeTipe("Afegeix Tipus"));
@@ -39,7 +41,7 @@ public class Presentation_controller {
     public static List<RecipeTipe> getTipus(){return tipus; }
 
     public static Recipe getRecepta(int posicio) {
-        return db.getRecipeByName(llista.get(posicio).getNom());
+        return db.getRecipeByName(filtratge.get(posicio).getNom());
     }
     public static void AfegeixTipus(String name){
         tipus.add(0,new RecipeTipe(name));
@@ -74,4 +76,46 @@ public class Presentation_controller {
         ingredients.add(new Ingredient("Afegeix Ingredient"));
     }
 
+    public static void filtraPerNom(String s){
+        filtratge = db.filtraPerNom(s);
+        adapter = new MyAdapter(context,filtratge);
+    }
+
+    public static Boolean filtraPerTipus(String s){
+        Boolean trobat = false;
+        if(s.isEmpty()){
+            adapter = new MyAdapter(context,llista);
+            filtratge = llista;
+            trobat=true;
+        }
+        else{
+            RecipeTipe tipus = db.getTipusReceptaByName(s);
+            if(tipus.getId() > 0){
+                filtratge = db.filtraPerTipus(tipus.getId());
+                adapter = new MyAdapter(context,filtratge);
+                trobat = true;
+            }
+        }
+        return trobat;
+
+    }
+
+    public static Boolean filtraPerIngredient(String s){
+        Boolean trobat = false;
+        if(s.isEmpty()){
+            adapter = new MyAdapter(context,llista);
+            filtratge = llista;
+            trobat=true;
+        }
+        else{
+            Ingredient ingredient = db.getIngredientByName(s);
+            if(ingredient.getId() > 0){
+                filtratge = db.filtraPerIngredient(ingredient.getId());
+                adapter = new MyAdapter(context,filtratge);
+                trobat = true;
+            }
+        }
+        return trobat;
+
+    }
 }

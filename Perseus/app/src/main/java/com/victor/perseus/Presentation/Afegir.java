@@ -175,7 +175,7 @@ public class Afegir extends Activity {
     }
 
     private String generateString(RecipeIngredient ri){
-        String s = "\n" + ri.getPrincipal().getName() + " " + ri.getQuantitat() + ".";
+        String s = "\n" + ri.getPrincipal().getName() + ": " + ri.getQuantitat() + ".";
         if(ri.getSubstitutes().size() > 0) s = s + " Es pot substituir per: "
                 + ri.getSubstitutes().get(0).getName() + ".";
         return s;

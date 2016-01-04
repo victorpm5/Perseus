@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.victor.perseus.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**

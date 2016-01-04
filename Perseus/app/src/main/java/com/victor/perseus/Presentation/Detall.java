@@ -38,7 +38,7 @@ public class Detall extends Activity {
         String ingredient = "";
         for(int i = 0; i < ri.size();i++){
             RecipeIngredient ir = ri.get(i);
-            ingredient = ingredient + " " + ir.getPrincipal().getName() + " " + ir.getQuantitat();
+            ingredient = ingredient + " " + ir.getPrincipal().getName() + ": " + ir.getQuantitat();
             List<Ingredient> ii = ir.getSubstitutes();
             for(int j = 0; j < ii.size();++j){
                 if(j == 0)ingredient = ingredient + ". Es pot substituir per: " + ii.get(j).getName();

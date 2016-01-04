@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
@@ -36,6 +37,9 @@ public class Receptas extends Activity {
 
     protected ListView lv;
     EditText et;
+    RadioButton nom;
+    RadioButton tipus;
+    RadioButton ingredient;
 
 
     @Override
@@ -44,6 +48,9 @@ public class Receptas extends Activity {
         setContentView(R.layout.activity_receptas);
         lv = (ListView) findViewById(R.id.lv);
         et = (EditText) findViewById(R.id.et);
+        nom = (RadioButton) findViewById(R.id.nom);
+        tipus = (RadioButton) findViewById(R.id.tipus);
+        ingredient = (RadioButton) findViewById(R.id.Ingredient);
         lv.setAdapter(Presentation_controller.getAdapter());
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,6 +58,18 @@ public class Receptas extends Activity {
                 Intent i = new Intent( Receptas.this, Detall.class);
                 i.putExtra("posicio",position);
                 startActivity(i);
+            }
+        });
+        lv.setLongClickable(true);
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+
+
+                Log.v("long clicked","pos: " + pos);
+
+                return true;
             }
         });
     }
@@ -83,6 +102,41 @@ public class Receptas extends Activity {
 
         super.onResume();
         this.onCreate(null);
+    }
+
+    public void cercaPerNom(View view){
+        if(nom.isChecked()) {
+            Presentation_controller.filtraPerNom(et.getText().toString());
+            lv.setAdapter(Presentation_controller.getAdapter());
+        }
+        else if (tipus.isChecked()){
+            Boolean trobat = Presentation_controller.filtraPerTipus(et.getText().toString());
+            if(trobat)lv.setAdapter(Presentation_controller.getAdapter());
+            else{
+                Toast toast = Toast.makeText(this, "No hi ha cap recepta amb aquest tipus", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+        else{
+            Boolean trobat = Presentation_controller.filtraPerIngredient(et.getText().toString());
+            if(trobat)lv.setAdapter(Presentation_controller.getAdapter());
+            else{
+                Toast toast = Toast.makeText(this, "No hi ha cap recepta amb aquest ingredient", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+    }
+
+    public void actualitzaEt(View view){
+        if(nom.isChecked()) {
+            et.setHint("Introdueix el nom de la recepta");
+        }
+        else if (tipus.isChecked()){
+            et.setHint("Introdueix el tipus de la recepta");
+        }
+        else{
+            et.setHint("Introdueix el nom d'un ingredient");
+        }
     }
 }
 

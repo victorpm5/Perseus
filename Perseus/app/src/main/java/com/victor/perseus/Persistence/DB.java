@@ -277,6 +277,11 @@ public class DB extends SQLiteOpenHelper {
             db.insert(TABLE_INGREDIENT, KEY_ID, values);
             values.clear();
 
+            values.put(KEY_ID, "15");
+            values.put(NOM_INGREDIENT, "Ametlla Triturada");
+            db.insert(TABLE_INGREDIENT, KEY_ID, values);
+            values.clear();
+
             //INICIALITZEM LA BD AMB INGREDIENT DE RECEPTA
             values.put(KEY_ID, "1");
             values.put(ID_INGREDIENT, "1");
@@ -314,9 +319,9 @@ public class DB extends SQLiteOpenHelper {
             values.clear();
 
             values.put(KEY_ID, "7");
-            values.put(ID_INGREDIENT, "2");
+            values.put(ID_INGREDIENT, "15");
             values.put(ID_RECEPTA, "2");
-            values.put(QUANTITAT, "Triturada 500 gr");
+            values.put(QUANTITAT, "500 gr");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
@@ -330,95 +335,88 @@ public class DB extends SQLiteOpenHelper {
             values.put(KEY_ID, "9");
             values.put(ID_INGREDIENT, "4");
             values.put(ID_RECEPTA, "2");
-            values.put(QUANTITAT, "3 rovells");
+            values.put(QUANTITAT, "3 rovells i 1 clara");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
             values.put(KEY_ID, "10");
-            values.put(ID_INGREDIENT, "4");
-            values.put(ID_RECEPTA, "2");
-            values.put(QUANTITAT, "1 clara");
-            db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
-            values.clear();
-
-            values.put(KEY_ID, "11");
             values.put(ID_INGREDIENT, "5");
             values.put(ID_RECEPTA, "2");
             values.put(QUANTITAT, "1/2 cullerada petita");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "12");
+            values.put(KEY_ID, "11");
             values.put(ID_INGREDIENT, "6");
             values.put(ID_RECEPTA, "2");
             values.put(QUANTITAT, "300 gr");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "13");
+            values.put(KEY_ID, "12");
             values.put(ID_INGREDIENT, "7");
             values.put(ID_RECEPTA, "3");
             values.put(QUANTITAT, "500 gr");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "14");
+            values.put(KEY_ID, "13");
             values.put(ID_INGREDIENT, "8");
             values.put(ID_RECEPTA, "3");
             values.put(QUANTITAT, "un parell de fulles");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "15");
+            values.put(KEY_ID, "14");
             values.put(ID_INGREDIENT, "9");
             values.put(ID_RECEPTA, "3");
             values.put(QUANTITAT, "1");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "16");
+            values.put(KEY_ID, "15");
             values.put(ID_INGREDIENT, "10");
             values.put(ID_RECEPTA, "3");
             values.put(QUANTITAT, "1 cullerada");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "17");
+            values.put(KEY_ID, "16");
             values.put(ID_INGREDIENT, "11");
             values.put(ID_RECEPTA, "4");
             values.put(QUANTITAT, "500 gr");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "18");
+            values.put(KEY_ID, "17");
             values.put(ID_INGREDIENT, "4");
             values.put(ID_RECEPTA, "4");
             values.put(QUANTITAT, "5");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "19");
+            values.put(KEY_ID, "18");
             values.put(ID_INGREDIENT, "12");
             values.put(ID_RECEPTA, "4");
             values.put(QUANTITAT, "5 gr");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "20");
+            values.put(KEY_ID, "19");
             values.put(ID_INGREDIENT, "13");
             values.put(ID_RECEPTA, "4");
             values.put(QUANTITAT, "30 ml");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "21");
+            values.put(KEY_ID, "20");
             values.put(ID_INGREDIENT, "9");
             values.put(ID_RECEPTA, "5");
             values.put(QUANTITAT, "1");
             db.insert(TABLE_INGREDIENT_RECEPTA, KEY_ID, values);
             values.clear();
 
-            values.put(KEY_ID, "22");
+            values.put(KEY_ID, "21");
             values.put(ID_INGREDIENT, "14");
             values.put(ID_RECEPTA, "5");
             values.put(QUANTITAT, "1 litre");
@@ -427,7 +425,7 @@ public class DB extends SQLiteOpenHelper {
 
             //INICIALITZEM LA BD AMB SUBSTITUTS
             values.put(KEY_ID, "1");
-            values.put(ID_INGREDIENT_RECEPTA, "12");
+            values.put(ID_INGREDIENT_RECEPTA, "11");
             values.put(ID_INGREDIENT, "2");
             db.insert(TABLE_INGREDIENT_SUBSTITUT, KEY_ID, values);
             values.clear();
@@ -538,7 +536,7 @@ public class DB extends SQLiteOpenHelper {
      * */
     public List<Ingredient> getAllIngredients() {
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
-        String selectQuery = "SELECT  * FROM " + TABLE_INGREDIENT;
+        String selectQuery = "SELECT  * FROM " + TABLE_INGREDIENT + " ORDER BY " + NOM_INGREDIENT;;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -764,6 +762,30 @@ public class DB extends SQLiteOpenHelper {
         return recipe;
     }
 
+    /**
+     * getting Specific recipe by id
+     * */
+    public Recipe getRecipeById(int id) {
+        Recipe recipe = new Recipe(resources);
+        String selectQuery = "SELECT  * FROM " + TABLE_RECEPTA
+                +" WHERE " + KEY_ID + "= " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            recipe.setId(c.getInt((c.getColumnIndex(KEY_ID))));
+            recipe.setNom(c.getString(c.getColumnIndex(NOM_RECEPTA)));
+            recipe.setRecepta(c.getString(c.getColumnIndex(RECEPTA)));
+            int id_tipus = c.getInt(c.getColumnIndex(ID_TIPUS));
+            recipe.setType(getTipusReceptaById((long)id_tipus));
+            byte[] blob = c.getBlob(c.getColumnIndex(IMATGE));
+            recipe.setImatge(Imatge.getPhoto(blob));
+            recipe.setIngedients(getAllRecipeIngredient(recipe.getId()));
+        }
+        c.close();
+        return recipe;
+    }
+
     public List<Recipe> getAllRecipes(){
         List<Recipe> receptas = new ArrayList<Recipe>();
         String selectQuery = "SELECT * FROM " + TABLE_RECEPTA;
@@ -809,6 +831,80 @@ public class DB extends SQLiteOpenHelper {
                 int id_tipus = c.getInt(c.getColumnIndex(ID_TIPUS));
                 recipe.setType(getTipusReceptaById((long)id_tipus));
                 recipe.setImatge(Imatge.getPhoto(c.getBlob(c.getColumnIndex(IMATGE))));
+                // adding to tags list
+                receptas.add(recipe);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return receptas;
+    }
+
+    public List<Recipe> filtraPerNom(String s){
+        List<Recipe> receptas = new ArrayList<Recipe>();
+        String selectQuery = "SELECT * FROM " + TABLE_RECEPTA + " WHERE "
+                + NOM_RECEPTA + " LIKE ? ORDER BY " + NOM_RECEPTA;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, new String[] { "%" + s + "%" });
+
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Recipe recipe = new Recipe(resources);
+                recipe.setId(c.getInt((c.getColumnIndex(KEY_ID))));
+                recipe.setNom(c.getString(c.getColumnIndex(NOM_RECEPTA)));
+                int id_tipus = c.getInt(c.getColumnIndex(ID_TIPUS));
+                recipe.setType(getTipusReceptaById((long)id_tipus));
+                recipe.setImatge(Imatge.getPhoto(c.getBlob(c.getColumnIndex(IMATGE))));
+                // adding to tags list
+                receptas.add(recipe);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return receptas;
+    }
+
+    public List<Recipe> filtraPerTipus(int i){
+        List<Recipe> receptas = new ArrayList<Recipe>();
+        String selectQuery = "SELECT * FROM " + TABLE_RECEPTA + " WHERE "
+                + ID_TIPUS + "=" + i + " ORDER BY " + NOM_RECEPTA;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery,null);
+
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Recipe recipe = new Recipe(resources);
+                recipe.setId(c.getInt((c.getColumnIndex(KEY_ID))));
+                recipe.setNom(c.getString(c.getColumnIndex(NOM_RECEPTA)));
+                int id_tipus = c.getInt(c.getColumnIndex(ID_TIPUS));
+                recipe.setType(getTipusReceptaById((long)id_tipus));
+                recipe.setImatge(Imatge.getPhoto(c.getBlob(c.getColumnIndex(IMATGE))));
+                // adding to tags list
+                receptas.add(recipe);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return receptas;
+    }
+
+    public List<Recipe> filtraPerIngredient(int i){
+        List<Recipe> receptas = new ArrayList<Recipe>();
+        String selectQuery = "SELECT " + ID_RECEPTA + " FROM " + TABLE_INGREDIENT_RECEPTA + " WHERE "
+                + ID_INGREDIENT + "=" + i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery,null);
+
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                int idRecepta = c.getInt(c.getColumnIndex(ID_RECEPTA));
+                Recipe recipe = getRecipeById(idRecepta);
                 // adding to tags list
                 receptas.add(recipe);
             } while (c.moveToNext());

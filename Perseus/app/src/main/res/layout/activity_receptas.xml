@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:text="Busca"
         android:textColor="#FFFFFF"
-        android:background="#a2a2a2"
+        android:background="@drawable/my_button"
         android:onClick="cercaPerNom" />
 
     <RadioGroup

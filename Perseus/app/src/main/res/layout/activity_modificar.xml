@@ -29,10 +29,11 @@
                 android:layout_height="wrap_content"
                 android:text="Nom:"
                 android:id="@+id/textViewM"
-                android:textColor="#FFFFFF"
+                android:textColor="#00b0ff"
                 android:layout_marginTop="15dp"
                 android:layout_alignBottom="@+id/editTextM"
-                android:layout_toEndOf="@+id/seleccioImatgeM" />
+                android:layout_toEndOf="@+id/seleccioImatgeM"
+                android:textSize="16dp" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -47,7 +48,7 @@
                 android:inputType="textCapSentences"
                 android:maxLines="1"
                 android:hint="Introdueix el nom"
-                android:textColor="#000000">
+                android:textColor="#ffffff">
             </EditText>
 
             <TextView
@@ -55,10 +56,11 @@
                 android:layout_height="wrap_content"
                 android:text="Tipus de recepta:"
                 android:id="@+id/textView2M"
-                android:textColor="#FFFFFF"
+                android:textColor="#00b0ff"
                 android:layout_marginTop="15dp"
                 android:layout_below="@+id/textViewM"
-                android:layout_toEndOf="@+id/seleccioImatgeM" />
+                android:layout_toEndOf="@+id/seleccioImatgeM"
+                android:textSize="16dp" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -76,10 +78,11 @@
                 android:text="Ingredients"
                 android:id="@+id/textView3M"
                 android:layout_marginTop="141dp"
-                android:textColor="#ffffff"
+                android:textColor="#00b0ff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -124,7 +127,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_toEndOf="@+id/seleccioSubstitutM"
                 android:inputType="textCapSentences"
-                android:textColor="#000000" />
+                android:textColor="#ffffff" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -135,7 +138,7 @@
                 android:layout_below="@+id/quantitatM"
                 android:layout_alignParentStart="true"
                 android:onClick="mostraSubstitutM"
-                android:textColor="#000000" />
+                android:textColor="#ffffff" />
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:id="@+id/llistaIngredientsM"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_below="@+id/seleccioSubstitutM"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="10dp"
@@ -161,10 +164,11 @@
                 android:layout_height="wrap_content"
                 android:text="Passos a Seguir"
                 android:id="@+id/textView4M"
-                android:textColor="#ffffff"
+                android:textColor="#00b0ff"
                 android:layout_marginLeft="10dp"
                 android:layout_below="@+id/llistaIngredientsM"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="25dp"
+                android:textSize="18dp" />
 
             <EditText
                 android:id="@+id/EditText02M"
@@ -174,7 +178,7 @@
                 android:layout_width="fill_parent"
                 android:layout_below="@id/textView4M"
                 android:lines="5"
-                android:background="#acacac"
+                android:background="@drawable/my_edit"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical"
                 android:layout_marginTop="10dp"
@@ -185,12 +189,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guardar"
+                android:text=" Guardar "
                 android:id="@+id/button3M"
                 android:onClick="guardaReceptaM"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/EditText02M"
-                android:layout_alignEnd="@id/seleccioTipusM"/>
+                android:layout_alignEnd="@id/seleccioTipusM"
+                android:background="@drawable/my_button" />
 
         </RelativeLayout>
     </ScrollView>

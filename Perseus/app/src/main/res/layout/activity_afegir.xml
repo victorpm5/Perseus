@@ -29,10 +29,12 @@
                 android:layout_height="wrap_content"
                 android:text="Nom:"
                 android:id="@+id/textView"
-                android:textColor="#FFFFFF"
+                android:textColor="#00b0ff"
                 android:layout_marginTop="15dp"
                 android:layout_alignBottom="@+id/editText"
-                android:layout_toEndOf="@+id/seleccioImatge" />
+                android:layout_toEndOf="@+id/seleccioImatge"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -47,7 +49,7 @@
                 android:inputType="textCapSentences"
                 android:maxLines="1"
                 android:hint="Introdueix el nom"
-                android:textColor="#000000">
+                android:textColor="#ffffff">
             </EditText>
 
             <TextView
@@ -55,10 +57,12 @@
                 android:layout_height="wrap_content"
                 android:text="Tipus de recepta:"
                 android:id="@+id/textView2"
-                android:textColor="#FFFFFF"
+                android:textColor="#00b0ff"
                 android:layout_marginTop="15dp"
                 android:layout_below="@+id/textView"
-                android:layout_toEndOf="@+id/seleccioImatge" />
+                android:layout_toEndOf="@+id/seleccioImatge"
+                android:textStyle="bold"
+                android:textSize="16dp" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -67,7 +71,7 @@
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/textView2"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="3dp"
                 android:textColor="#FFFFFF"
                 style="@android:style/Theme.Holo.Light.DarkActionBar" />
 
@@ -77,10 +81,12 @@
                 android:text="Ingredients"
                 android:id="@+id/textView3"
                 android:layout_marginTop="141dp"
-                android:textColor="#ffffff"
+                android:textColor="#00b0ff"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -124,7 +130,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
                 android:layout_toEndOf="@+id/seleccioSubstitut"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:inputType="textCapSentences"/>
 
             <CheckBox
@@ -136,7 +142,7 @@
                 android:layout_below="@+id/quantitat"
                 android:layout_alignParentStart="true"
                 android:onClick="mostraSubstitut"
-                android:textColor="#000000" />
+                android:textColor="#ffffff" />
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -151,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:id="@+id/llistaIngredients"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:layout_below="@+id/seleccioSubstitut"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="10dp"
@@ -162,10 +168,12 @@
                 android:layout_height="wrap_content"
                 android:text="Passos a Seguir"
                 android:id="@+id/textView4"
-                android:textColor="#ffffff"
+                android:textColor="#00b0ff"
                 android:layout_marginLeft="10dp"
                 android:layout_below="@+id/llistaIngredients"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="25dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/EditText02"
@@ -175,7 +183,7 @@
                 android:layout_width="fill_parent"
                 android:layout_below="@id/textView4"
                 android:lines="5"
-                android:background="#acacac"
+                android:background="@drawable/my_edit"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical"
                 android:layout_marginTop="10dp"
@@ -186,12 +194,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guardar"
+                android:text=" Guardar "
                 android:id="@+id/button3"
                 android:onClick="guardaRecepta"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/EditText02"
-                android:layout_alignEnd="@id/seleccioTipus"/>
+                android:layout_alignEnd="@id/seleccioTipus"
+                android:background="@drawable/my_button" />
 
         </RelativeLayout>
     </ScrollView>

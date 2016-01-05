@@ -56,4 +56,8 @@ public class RecipeIngredient {
     public void addSubstitut(Ingredient substitut){
         substitutes.add(substitut);
     }
+
+    public void setPrincipal(Ingredient principal) {
+        this.principal = principal;
+    }
 }

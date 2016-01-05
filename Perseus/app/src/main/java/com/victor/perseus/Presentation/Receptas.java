@@ -74,8 +74,9 @@ public class Receptas extends Activity {
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         if(item ==0){
-                            Toast toast = Toast.makeText(getApplicationContext(), "modifiquem la recepta", Toast.LENGTH_LONG);
-                            toast.show();
+                            Intent i = new Intent( Receptas.this, Modificar.class);
+                            i.putExtra("posicio",pos);
+                            startActivity(i);
                         }
                         else{
                             dialog.dismiss();
@@ -135,9 +136,10 @@ public class Receptas extends Activity {
 
     @Override
     protected void onResume() {
-
         super.onResume();
         this.onCreate(null);
+        Presentation_controller.ompleAdapter();
+        lv.setAdapter(Presentation_controller.getAdapter());
     }
 
     public void cercaPerNom(View view){
@@ -173,6 +175,7 @@ public class Receptas extends Activity {
         else{
             et.setHint("Introdueix el nom d'un ingredient");
         }
+        et.setText("");
     }
 }
 

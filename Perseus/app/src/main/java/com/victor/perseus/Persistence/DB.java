@@ -457,7 +457,8 @@ public class DB extends SQLiteOpenHelper {
      * */
     public List<RecipeTipe> getAllTipusRecepta() {
         List<RecipeTipe> tipus = new ArrayList<RecipeTipe>();
-        String selectQuery = "SELECT  * FROM " + TABLE_TIPUS_RECEPTA;
+        String selectQuery = "SELECT  * FROM " + TABLE_TIPUS_RECEPTA
+                + " ORDER BY " + NOM_TIPUS;;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -513,11 +514,7 @@ public class DB extends SQLiteOpenHelper {
         c.close();
         return tipus;
     }
-
-    /**
-     * remove tipus per id
-     * */
-    public void removeTipusById(int id) {
+    public int countTipusById(int id){
         String selectQuery = "SELECT  COUNT(*) FROM " + TABLE_RECEPTA
                 +" WHERE " + ID_TIPUS + "=" + id ;
         int count = 0;
@@ -528,10 +525,17 @@ public class DB extends SQLiteOpenHelper {
             count = c.getInt(0);
         }
         c.close();
+        return count;
+    }
 
+    /**
+     * remove tipus per id
+     * */
+    public void removeTipusById(int id) {
+        int count = countTipusById(id);
         if(count == 1) {
             //Borrem de la bd tots els recipe ingredients
-            db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getWritableDatabase();
             try {
                 db.delete(TABLE_TIPUS_RECEPTA, KEY_ID + " = " + id, null);
             } catch (Exception e) {
@@ -619,10 +623,7 @@ public class DB extends SQLiteOpenHelper {
         return ingredient;
     }
 
-    /**
-     * remove ingredient per id
-     * */
-    public void removeIngredientById(int id) {
+    public int countIngredientById(int id){
         String selectQuery = "SELECT  COUNT(*) FROM " + TABLE_INGREDIENT_RECEPTA
                 +" WHERE " + ID_INGREDIENT + "=" + id ;
         int count = 0;
@@ -633,10 +634,17 @@ public class DB extends SQLiteOpenHelper {
             count = c.getInt(0);
         }
         c.close();
+        return count;
+    }
 
+    /**
+     * remove ingredient per id
+     * */
+    public void removeIngredientById(int id) {
+        int count = countIngredientById(id);
         if(count == 1) {
             //Borrem de la bd tots els recipe ingredients
-            db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getWritableDatabase();
             try {
                 db.delete(TABLE_INGREDIENT, KEY_ID + " = " + id, null);
             } catch (Exception e) {

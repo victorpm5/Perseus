@@ -27,6 +27,7 @@ public class Recipe {
     public Recipe(Resources resources){
         this.nom = "nom";
         this.recepta = "Aquí va la recepta";
+        this.id = -1;
         ingedients = new ArrayList<RecipeIngredient>();
         imatge = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher);
         type = new RecipeTipe("Altres");
@@ -80,6 +81,14 @@ public class Recipe {
 
     public void setIngedients(List<RecipeIngredient> ingedients) {
         this.ingedients = ingedients;
+    }
+
+    public void setPrincipal(int posicio, int id){
+        RecipeIngredient ri = ingedients.get(posicio);
+        Ingredient i = ri.getPrincipal();
+        i.setId(id);
+        ri.setPrincipal(i);
+        ingedients.set(posicio,ri);
     }
 
     //

@@ -52,6 +52,7 @@ public class TipusSpinner extends Activity implements AdapterView.OnItemSelected
             AlertDialog.Builder alert = new AlertDialog.Builder(parent.getContext());
             final EditText edittext = new EditText(parent.getContext());
             edittext.setHint("Nom de l'ingredient");
+            edittext.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
             alert.setTitle("Nou ingredient");
             alert.setMessage("Introdueix el nom de l'ingredient a afegir");
 

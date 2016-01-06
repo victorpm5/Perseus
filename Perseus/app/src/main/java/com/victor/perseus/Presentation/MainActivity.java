@@ -45,8 +45,8 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ajuda) {
-            Toast.makeText(getApplicationContext(), "això és l'ajuda! :)",
-                    Toast.LENGTH_LONG).show();
+            Intent i = new Intent( MainActivity.this, Ajuda.class);
+            startActivity(i);
         }
 
         if (id == R.id.action_informacio) {

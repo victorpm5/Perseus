@@ -19,6 +19,7 @@
         <activity android:name=".Presentation.Afegir"/>
         <activity android:name=".Presentation.Detall"/>
         <activity android:name=".Presentation.Modificar"/>
+        <activity android:name=".Presentation.Ajuda"/>
     </application>
 
 </manifest>

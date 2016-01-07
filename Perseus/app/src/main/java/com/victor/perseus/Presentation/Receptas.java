@@ -125,6 +125,11 @@ public class Receptas extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.action_ajuda) {
+            Intent i = new Intent( Receptas.this, Ajuda.class);
+            startActivity(i);
+        }
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_afegir) {
             Intent i = new Intent( Receptas.this, Afegir.class);

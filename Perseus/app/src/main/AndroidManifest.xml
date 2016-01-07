@@ -9,17 +9,23 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Presentation.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Presentation.Receptas"/>
-        <activity android:name=".Presentation.Afegir"/>
-        <activity android:name=".Presentation.Detall"/>
-        <activity android:name=".Presentation.Modificar"/>
-        <activity android:name=".Presentation.Ajuda"/>
+        <activity android:name=".Presentation.Receptas"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Presentation.Afegir"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Presentation.Detall"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Presentation.Modificar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Presentation.Ajuda"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

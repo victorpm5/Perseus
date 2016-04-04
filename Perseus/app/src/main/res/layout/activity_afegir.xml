@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fons"
+    android:id="@+id/afegir">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/seleccioImatge"
+                android:src="@drawable/plat"
+                android:onClick="selectImage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="10dp"
+                android:cropToPadding="false"
+                android:longClickable="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom:"
+                android:id="@+id/textView"
+                android:textColor="#00b0ff"
+                android:layout_marginTop="15dp"
+                android:layout_alignBottom="@+id/editText"
+                android:layout_toEndOf="@+id/seleccioImatge"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView"
+                android:layout_alignParentEnd="false"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="10dp"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:hint="Introdueix el nom"
+                android:textColor="#ffffff">
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipus de recepta:"
+                android:id="@+id/textView2"
+                android:textColor="#00b0ff"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/textView"
+                android:layout_toEndOf="@+id/seleccioImatge"
+                android:textStyle="bold"
+                android:textSize="16dp" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seleccioTipus"
+                android:layout_below="@+id/editText"
+                android:layout_toEndOf="@+id/textView2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="3dp"
+                android:textColor="#FFFFFF"
+                style="@android:style/Theme.Holo.Light.DarkActionBar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:id="@+id/textView3"
+                android:layout_marginTop="141dp"
+                android:textColor="#00b0ff"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/minus"
+                android:background="@null"
+                android:layout_marginLeft="20dp"
+                android:onClick="eliminaIngredient"
+                android:layout_alignBottom="@+id/seleccioSubstitut"
+                android:layout_alignEnd="@+id/editText" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton2"
+                android:src="@drawable/plus"
+                android:background="@null"
+                android:layout_marginLeft="20dp"
+                android:onClick="afegeixIngredient"
+                android:layout_alignBottom="@+id/seleccioSubstitut"
+                android:layout_toStartOf="@+id/imageButton" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seleccioIngredient"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@+id/quantitat"
+                android:layout_alignEnd="@+id/seleccioSubstitut" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/quantitat"
+                android:layout_below="@+id/textView3"
+                android:hint="Introdueix quantitat"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_toEndOf="@+id/seleccioSubstitut"
+                android:textColor="#ffffff"
+                android:inputType="textCapSentences"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Es pot substituir per un altre ingredient?"
+                android:id="@+id/checkBox"
+                android:checked="false"
+                android:layout_below="@+id/quantitat"
+                android:layout_alignParentStart="true"
+                android:onClick="mostraSubstitut"
+                android:textColor="#ffffff" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seleccioSubstitut"
+                android:layout_below="@+id/checkBox"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_alignEnd="@+id/textView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/llistaIngredients"
+                android:textColor="#ffffff"
+                android:layout_below="@+id/seleccioSubstitut"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passos a Seguir"
+                android:id="@+id/textView4"
+                android:textColor="#00b0ff"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/llistaIngredients"
+                android:layout_marginTop="25dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/EditText02"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_below="@id/textView4"
+                android:lines="5"
+                android:background="@drawable/my_edit"
+                android:scrollHorizontally="false"
+                android:scrollbars="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Guardar "
+                android:id="@+id/button3"
+                android:onClick="guardaRecepta"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/EditText02"
+                android:layout_alignEnd="@id/seleccioTipus"
+                android:background="@drawable/my_button" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
